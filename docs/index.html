@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노동·노사 동향 브리핑 아카이브</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:15px; }
+:root {
+  --ink:#1a1a24; --ink3:#4a4a60; --muted:#8888a4;
+  --rule:#e0e0ec; --bg:#f5f4f0; --paper:#fefefc; --paper2:#f8f7f3;
+  --r0:#c0392b; --r0bg:#fdf2f1; --r0rule:#e8c5c2;
+  --r1:#1a5fa8; --r1bg:#f0f5fc; --r1rule:#bdd0ea;
+  --r2:#2d6a4f; --r2bg:#f0f7f3; --r2rule:#b7d9c6;
+}
+body { background:var(--bg); color:var(--ink); font-family:'Nanum Gothic',sans-serif; min-height:100vh; }
+body::before {
+  content:''; position:fixed; inset:0;
+  background-image:radial-gradient(circle,rgba(0,0,0,0.03) 1px,transparent 1px);
+  background-size:18px 18px; pointer-events:none; z-index:0;
+}
+.wrap { position:relative; z-index:1; max-width:860px; margin:0 auto; padding:0 24px 64px; }
+
+/* MASTHEAD */
+.masthead { border-bottom:3px double var(--ink); padding:20px 0 14px; display:flex; justify-content:space-between; align-items:flex-end; gap:16px; }
+.paper-flag { font-family:'Nanum Myeongjo',serif; font-size:26px; font-weight:800; letter-spacing:-0.5px; line-height:1; }
+.paper-flag em { font-style:normal; color:var(--r0); }
+.paper-tagline { font-size:10px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; font-family:'IBM Plex Mono',monospace; margin-top:4px; }
+.masthead-right { text-align:right; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); line-height:1.7; }
+.masthead-right strong { color:var(--ink3); display:block; font-size:12px; }
+
+/* LATEST BADGE */
+.latest-label { margin-top:20px; margin-bottom:8px; display:flex; align-items:center; gap:10px; }
+.latest-label span { font-size:9px; font-family:'IBM Plex Mono',monospace; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
+.latest-label::after { content:''; flex:1; height:1px; background:var(--rule); }
+
+/* LATEST CARD */
+.latest-card {
+  display:block; text-decoration:none;
+  border:2px solid var(--ink); background:var(--paper);
+  padding:20px 24px; margin-bottom:28px;
+  transition:box-shadow .15s, transform .15s;
+  position:relative;
+}
+.latest-card:hover { box-shadow:4px 4px 0 var(--ink); transform:translate(-2px,-2px); }
+.latest-card .lc-tag {
+  display:inline-block; background:var(--r0); color:#fff;
+  font-size:9px; font-weight:800; padding:2px 8px; letter-spacing:1.5px;
+  font-family:'IBM Plex Mono',monospace; margin-bottom:10px;
+}
+.latest-card .lc-date { font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:500; color:var(--ink); margin-bottom:4px; }
+.latest-card .lc-sub { font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; }
+.latest-card .lc-arrow { position:absolute; right:24px; bottom:20px; font-size:20px; color:var(--muted); }
+
+/* SECTION LABEL */
+.section-label { margin-top:4px; margin-bottom:10px; display:flex; align-items:center; gap:10px; }
+.section-label span { font-size:9px; font-family:'IBM Plex Mono',monospace; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
+.section-label::after { content:''; flex:1; height:1px; background:var(--rule); }
+
+/* ARCHIVE LIST */
+.archive-list { list-style:none; border:1px solid var(--ink); background:var(--paper); }
+.archive-item { border-bottom:1px solid var(--rule); }
+.archive-item:last-child { border-bottom:none; }
+.archive-link {
+  display:flex; align-items:center; gap:16px;
+  padding:14px 20px; text-decoration:none; color:var(--ink);
+  transition:background .12s;
+}
+.archive-link:hover { background:var(--paper2); }
+.al-date { font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500; color:var(--ink); min-width:120px; }
+.al-label { font-size:12px; color:var(--ink3); }
+.al-new { margin-left:auto; font-size:9px; font-weight:800; color:var(--r0); border:1px solid var(--r0); padding:1px 6px; letter-spacing:.5px; font-family:'IBM Plex Mono',monospace; flex-shrink:0; }
+.al-arrow { margin-left:8px; color:var(--muted); font-size:12px; }
+
+/* EMPTY / LOADING */
+.state-msg { padding:40px 20px; text-align:center; color:var(--muted); font-size:13px; font-family:'IBM Plex Mono',monospace; }
+.spinner { display:inline-block; width:12px; height:12px; border:2px solid var(--rule); border-top-color:var(--muted); border-radius:50%; animation:spin .7s linear infinite; margin-right:8px; vertical-align:middle; }
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* FOOTER */
+footer { margin-top:24px; padding:12px 0; border-top:1px solid var(--rule); display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted); }
+.ft-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--r2); margin-right:6px; animation:bl 2s infinite; }
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="masthead">
+  <div>
+    <div class="paper-flag">Labor <em>Briefing</em> Insight</div>
+    <div class="paper-tagline">노사관계 · 노동정책 · 노동법률 · Daily Intelligence</div>
+  </div>
+  <div class="masthead-right">
+    ERM팀 내부 공유용
+    <strong id="today-date">—</strong>
+  </div>
+</div>
+
+<div class="latest-label"><span>최신 브리핑</span></div>
+<div id="latest-container">
+  <div class="state-msg"><span class="spinner"></span>불러오는 중...</div>
+</div>
+
+<div class="section-label"><span>전체 아카이브</span></div>
+<ul class="archive-list" id="archive-list">
+  <li class="archive-item"><div class="state-msg"><span class="spinner"></span>불러오는 중...</div></li>
+</ul>
+
+<footer>
+  <div><span class="ft-dot"></span>LABOR BRIEFING INSIGHT · ERM팀</div>
+  <div id="footer-count">—</div>
+</footer>
+
+</div>
+
+<script>
+// 오늘 날짜 표시
+const now = new Date();
+document.getElementById('today-date').textContent =
+  now.toLocaleDateString('ko-KR', { year:'numeric', month:'long', day:'numeric', weekday:'short' });
+
+// GitHub API로 docs/ 폴더 파일 목록 조회
+const REPO = 'jaeyoul-yoo/alex';
+const API_URL = `https://api.github.com/repos/${REPO}/contents/docs`;
+const PAGES_BASE = `https://jaeyoul-yoo.github.io/alex`;
+
+function parseDateFromFilename(name) {
+  // labor-briefing-YYYYMMDD.html or labor-briefing-YYYYMMDD_HH.html
+  const m = name.match(/labor-briefing-(\d{4})(\d{2})(\d{2})/);
+  if (!m) return null;
+  return { year:m[1], month:m[2], day:m[3], label:`${m[1]}.${m[2]}.${m[3]}` };
+}
+
+fetch(API_URL)
+  .then(r => r.json())
+  .then(files => {
+    if (!Array.isArray(files)) throw new Error('API 오류');
+
+    const briefings = files
+      .filter(f => f.name.startsWith('labor-briefing-') && f.name.endsWith('.html'))
+      .map(f => ({ name: f.name, date: parseDateFromFilename(f.name) }))
+      .filter(f => f.date)
+      .sort((a, b) => b.name.localeCompare(a.name)); // 최신순
+
+    if (briefings.length === 0) {
+      document.getElementById('latest-container').innerHTML =
+        '<div class="state-msg">아직 브리핑 파일이 없습니다.</div>';
+      document.getElementById('archive-list').innerHTML =
+        '<li class="archive-item"><div class="state-msg">—</div></li>';
+      return;
+    }
+
+    // 최신 브리핑 카드
+    const latest = briefings[0];
+    const latestUrl = `${PAGES_BASE}/${latest.name}`;
+    document.getElementById('latest-container').innerHTML = `
+      <a class="latest-card" href="${latestUrl}" target="_blank">
+        <div class="lc-tag">LATEST</div>
+        <div class="lc-date">${latest.date.year}년 ${latest.date.month}월 ${latest.date.day}일</div>
+        <div class="lc-sub">노동법·제도 · 노사관계·쟁의 · HR·인사 트렌드</div>
+        <div class="lc-arrow">→</div>
+      </a>`;
+
+    // 아카이브 목록
+    const listHtml = briefings.map((b, i) => {
+      const url = `${PAGES_BASE}/${b.name}`;
+      const isNew = i < 3;
+      return `
+        <li class="archive-item">
+          <a class="archive-link" href="${url}" target="_blank">
+            <span class="al-date">${b.date.year}.${b.date.month}.${b.date.day}</span>
+            <span class="al-label">노동·노사 동향 브리핑</span>
+            ${isNew ? '<span class="al-new">NEW</span>' : ''}
+            <span class="al-arrow">→</span>
+          </a>
+        </li>`;
+    }).join('');
+    document.getElementById('archive-list').innerHTML = listHtml;
+    document.getElementById('footer-count').textContent = `총 ${briefings.length}건 수록`;
+  })
+  .catch(err => {
+    const msg = `<div class="state-msg">파일 목록을 불러올 수 없습니다.<br><small>${err.message}</small></div>`;
+    document.getElementById('latest-container').innerHTML = msg;
+    document.getElementById('archive-list').innerHTML = `<li class="archive-item">${msg}</li>`;
+  });
+</script>
+</body>
+</html>
