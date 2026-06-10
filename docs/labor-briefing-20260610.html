@@ -3,385 +3,542 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>노동·노사 동향 브리핑 — 2026년 6월 10일</title>
+<title>노동 브리핑 — 2026.06.10</title>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:15px; }
+html { font-size:14px; }
 :root {
-  --ink:#1a1a24; --ink3:#4a4a60; --muted:#8888a4;
-  --rule:#e0e0ec; --bg:#f5f4f0; --paper:#fefefc; --paper2:#f8f7f3;
-  --r0:#c0392b; --r0bg:#fdf2f1; --r0rule:#e8c5c2;
-  --r1:#1a5fa8; --r1bg:#f0f5fc; --r1rule:#bdd0ea;
-  --r2:#2d6a4f; --r2bg:#f0f7f3; --r2rule:#b7d9c6;
+  --ink:#1a1a24; --ink2:#2e2e40; --ink3:#4a4a60; --muted:#8888a4; --muted2:#b0b0c4;
+  --rule:#e4e4f0; --bg:#f2f1ed; --paper:#ffffff; --paper2:#f8f7f4;
+  --c0:#c0392b; --c0bg:#fdf2f1; --c0light:#fae8e6; --c0rule:#e8c5c2;
+  --c1:#1a5fa8; --c1bg:#f0f5fc; --c1light:#e4edf8; --c1rule:#bdd0ea;
+  --c2:#2d6a4f; --c2bg:#f0f7f3; --c2light:#e2f0e9; --c2rule:#b7d9c6;
+  --hot:#d35400; --hotbg:#fef3ed; --new:#0e7490; --newbg:#ecfeff;
+  --stat-border:#d8d8e8;
 }
 body { background:var(--bg); color:var(--ink); font-family:'Nanum Gothic',sans-serif; min-height:100vh; }
-body::before {
-  content:''; position:fixed; inset:0;
-  background-image:radial-gradient(circle,rgba(0,0,0,0.03) 1px,transparent 1px);
-  background-size:18px 18px; pointer-events:none; z-index:0;
-}
-.wrap { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:0 24px 64px; }
 
-/* MASTHEAD */
+/* ═══════════════════════════════════
+   MASTHEAD
+═══════════════════════════════════ */
 .masthead {
-  border-top:4px solid var(--ink);
-  border-bottom:3px double var(--ink);
-  padding:18px 0 14px;
-  text-align:center;
-  position:relative;
+  background:var(--paper); border-bottom:2px solid var(--ink);
+  padding:14px 28px 12px; display:flex; justify-content:space-between; align-items:center;
 }
-.paper-flag { font-family:'Nanum Myeongjo',serif; font-size:36px; font-weight:800; letter-spacing:-1px; line-height:1; }
-.paper-flag em { font-style:normal; color:var(--r0); }
-.paper-tagline { font-size:10px; color:var(--muted); letter-spacing:3px; text-transform:uppercase; font-family:'IBM Plex Mono',monospace; margin-top:6px; }
-.masthead-meta {
-  margin-top:10px; padding-top:10px; border-top:1px solid var(--rule);
-  display:flex; justify-content:space-between; align-items:center;
-  font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted);
-}
-.masthead-meta .issue { font-weight:500; color:var(--ink3); }
+.logo { display:flex; flex-direction:column; }
+.logo-title { font-family:'Nanum Myeongjo',serif; font-size:28px; line-height:1; letter-spacing:-0.5px; }
+.logo-title span { font-weight:400; color:var(--ink3); }
+.logo-title strong { font-weight:800; color:var(--ink); }
+.logo-sub { font-size:9px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; font-family:'IBM Plex Mono',monospace; margin-top:5px; }
+.masthead-right { text-align:right; }
+.mh-date { font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500; color:var(--ink2); }
+.mh-tabs { display:flex; gap:2px; margin-top:6px; justify-content:flex-end; }
+.mh-tab { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:1px; padding:3px 8px; border:1px solid var(--rule); color:var(--muted); cursor:default; }
+.mh-tab.active { background:var(--ink); color:#fff; border-color:var(--ink); }
 
-/* COLUMNS */
-.columns { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:20px; border:1px solid var(--ink); }
-.col { border-right:1px solid var(--ink); }
-.col:last-child { border-right:none; }
-
-/* COLUMN HEADER */
-.col-hd {
-  padding:10px 16px;
-  border-bottom:2px solid var(--ink);
-  display:flex; align-items:baseline; gap:8px;
+/* ═══════════════════════════════════
+   STATS BAR
+═══════════════════════════════════ */
+.stats-bar {
+  display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr 1fr;
+  border-bottom:1px solid var(--stat-border); background:var(--paper);
 }
-.col-0 .col-hd { background:var(--r0bg); }
-.col-1 .col-hd { background:var(--r1bg); }
-.col-2 .col-hd { background:var(--r2bg); }
-.col-badge {
-  font-size:9px; font-weight:800; font-family:'IBM Plex Mono',monospace;
-  letter-spacing:1.5px; color:#fff; padding:2px 7px; flex-shrink:0;
+.stat-cell {
+  padding:12px 20px; border-right:1px solid var(--stat-border);
+  display:flex; flex-direction:column; gap:2px;
 }
-.col-0 .col-badge { background:var(--r0); }
-.col-1 .col-badge { background:var(--r1); }
-.col-2 .col-badge { background:var(--r2); }
-.col-title { font-family:'Nanum Myeongjo',serif; font-size:15px; font-weight:700; }
-.col-0 .col-title { color:var(--r0); }
-.col-1 .col-title { color:var(--r1); }
-.col-2 .col-title { color:var(--r2); }
+.stat-cell:last-child { border-right:none; }
+.stat-label { font-size:10px; color:var(--muted); font-family:'IBM Plex Mono',monospace; letter-spacing:1px; }
+.stat-value { font-size:22px; font-weight:800; font-family:'Nanum Myeongjo',serif; line-height:1.1; }
+.stat-cell.all .stat-value { color:var(--ink); }
+.stat-cell.s0 .stat-value { color:var(--c0); }
+.stat-cell.s1 .stat-value { color:var(--c1); }
+.stat-cell.s2 .stat-value { color:var(--c2); }
+.stat-cell.src .stat-value { color:var(--muted); font-size:18px; }
 
-/* ARTICLES */
-.col-body { padding:0; }
-.article {
-  padding:14px 16px;
-  border-bottom:1px solid var(--rule);
+/* ═══════════════════════════════════
+   SOURCE BAR
+═══════════════════════════════════ */
+.source-bar {
+  background:var(--paper2); border-bottom:1px solid var(--rule);
+  padding:9px 28px; font-size:11.5px; color:var(--ink3);
+  display:flex; gap:8px; align-items:baseline; flex-wrap:wrap;
+  font-family:'Nanum Gothic',sans-serif;
+}
+.source-bar .icon { font-size:14px; flex-shrink:0; }
+.source-bar .src-label { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; flex-shrink:0; }
+.source-bar .src-sites { color:var(--ink3); font-size:11.5px; }
+.source-bar .src-period { color:var(--muted); font-size:10.5px; font-family:'IBM Plex Mono',monospace; }
+.source-bar .sep { color:var(--muted2); }
+
+/* ═══════════════════════════════════
+   STATUS BAR
+═══════════════════════════════════ */
+.status-bar {
+  background:#f0fdf4; border-bottom:1px solid #bbf7d0; border-top:1px solid #bbf7d0;
+  padding:8px 28px; font-size:12px;
+  display:flex; align-items:center; gap:16px;
+}
+.status-check { color:#16a34a; font-size:14px; font-weight:800; }
+.status-text { color:#15803d; font-weight:700; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.5px; }
+.status-divider { color:#86efac; }
+.status-counts { display:flex; gap:12px; }
+.status-count { font-size:11px; font-family:'IBM Plex Mono',monospace; }
+.status-count.s0 { color:var(--c0); }
+.status-count.s1 { color:var(--c1); }
+.status-count.s2 { color:var(--c2); }
+
+/* ═══════════════════════════════════
+   MAIN GRID
+═══════════════════════════════════ */
+.main-grid {
+  display:grid; grid-template-columns:repeat(3,1fr);
+  gap:0; margin:20px 20px 0; border:1px solid var(--ink);
   background:var(--paper);
 }
+.col { border-right:1px solid var(--ink); background:var(--paper); }
+.col:last-child { border-right:none; }
+
+/* ═══════════════════════════════════
+   SECTION HEADER
+═══════════════════════════════════ */
+.sec-hd {
+  padding:12px 16px 10px; border-bottom:2px solid var(--ink);
+  background:var(--paper);
+}
+.sec-num { font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:2.5px; color:var(--muted); text-transform:uppercase; margin-bottom:5px; }
+.sec-title-row { display:flex; align-items:center; justify-content:space-between; }
+.sec-emoji { font-size:18px; margin-right:6px; line-height:1; }
+.sec-name { font-size:16px; font-weight:800; line-height:1; }
+.col-0 .sec-name { color:var(--c0); }
+.col-1 .sec-name { color:var(--c1); }
+.col-2 .sec-name { color:var(--c2); }
+.sec-count {
+  font-family:'IBM Plex Mono',monospace; font-size:9px; font-weight:700;
+  padding:2px 8px; color:#fff; flex-shrink:0;
+}
+.col-0 .sec-count { background:var(--c0); }
+.col-1 .sec-count { background:var(--c1); }
+.col-2 .sec-count { background:var(--c2); }
+.sec-keywords {
+  margin-top:7px; font-size:10.5px; color:var(--muted);
+  font-family:'IBM Plex Mono',monospace; letter-spacing:0.3px;
+}
+.sec-keywords span { color:var(--muted2); margin:0 2px; }
+
+/* ═══════════════════════════════════
+   SUB-GROUP LABEL
+═══════════════════════════════════ */
+.sub-group {
+  padding:6px 16px; border-bottom:1px solid var(--rule);
+  display:flex; align-items:center; justify-content:space-between;
+  background:var(--paper2);
+}
+.col-0 .sub-group { background:var(--c0light); border-bottom-color:var(--c0rule); }
+.col-1 .sub-group { background:var(--c1light); border-bottom-color:var(--c1rule); }
+.col-2 .sub-group { background:var(--c2light); border-bottom-color:var(--c2rule); }
+.sg-label { font-size:10.5px; font-weight:700; color:var(--ink3); font-family:'Nanum Gothic',sans-serif; }
+.col-0 .sg-label { color:var(--c0); }
+.col-1 .sg-label { color:var(--c1); }
+.col-2 .sg-label { color:var(--c2); }
+.sg-count { font-family:'IBM Plex Mono',monospace; font-size:9px; color:var(--muted); }
+
+/* ═══════════════════════════════════
+   ARTICLES
+═══════════════════════════════════ */
+.article { padding:13px 16px; border-bottom:1px solid var(--rule); }
 .article:last-child { border-bottom:none; }
 .article:hover { background:var(--paper2); }
 
-/* ARTICLE TOP ROW */
-.art-top { display:flex; align-items:flex-start; gap:8px; margin-bottom:6px; }
-.art-num {
-  font-family:'IBM Plex Mono',monospace; font-size:9px; font-weight:500;
-  color:#fff; padding:1px 5px; flex-shrink:0; margin-top:2px;
+.art-meta {
+  display:flex; align-items:center; gap:6px; margin-bottom:5px; flex-wrap:wrap;
 }
-.col-0 .art-num { background:var(--r0); }
-.col-1 .art-num { background:var(--r1); }
-.col-2 .art-num { background:var(--r2); }
-.art-hl { font-family:'Nanum Myeongjo',serif; font-size:13.5px; font-weight:700; line-height:1.45; color:var(--ink); }
-
-/* ARTICLE BODY */
-.art-body { font-size:12px; line-height:1.75; color:var(--ink3); }
-.art-src {
-  margin-top:6px; display:flex; align-items:center; gap:6px;
-  font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted);
+.art-source { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); }
+.art-dot-sep { color:var(--muted2); font-size:10px; }
+.art-time { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted2); }
+.badge {
+  font-family:'IBM Plex Mono',monospace; font-size:8px; font-weight:700;
+  letter-spacing:.5px; padding:1px 5px;
 }
-.art-src a { color:var(--muted); text-decoration:none; }
-.art-src a:hover { text-decoration:underline; }
-.art-dot { width:4px; height:4px; border-radius:50%; flex-shrink:0; }
-.col-0 .art-dot { background:var(--r0); }
-.col-1 .art-dot { background:var(--r1); }
-.col-2 .art-dot { background:var(--r2); }
+.badge-hot { background:var(--hot); color:#fff; }
+.badge-new { background:var(--new); color:#fff; }
+.badge-weekly { background:#7c3aed; color:#fff; }
 
-/* HOT LABEL */
-.art-hot {
-  display:inline-block; font-size:8px; font-weight:800;
-  font-family:'IBM Plex Mono',monospace; letter-spacing:.5px;
-  color:var(--r0); border:1px solid var(--r0); padding:0px 4px; margin-left:4px;
-  vertical-align:middle;
+.art-hl {
+  font-family:'Nanum Myeongjo',serif; font-size:13.5px; font-weight:700;
+  line-height:1.5; color:var(--ink); margin-bottom:7px;
 }
+.art-hl a { color:inherit; text-decoration:none; }
+.art-hl a:hover { text-decoration:underline; }
+.art-body { font-size:12px; line-height:1.85; color:var(--ink3); }
 
-/* DIVIDER LINE */
-.col-div {
-  border:none; border-top:1px dashed var(--rule);
-  margin:0;
-}
-
-/* SOURCES */
-.sources-bar {
-  margin-top:20px; padding:12px 18px;
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+.page-footer {
+  margin:20px 20px 40px; padding:12px 20px;
   border:1px solid var(--rule); background:var(--paper);
-  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-}
-.src-label { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; flex-shrink:0; }
-.src-links { display:flex; gap:10px; flex-wrap:wrap; }
-.src-links a {
-  font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--ink3);
-  text-decoration:none; border-bottom:1px solid var(--rule); padding-bottom:1px;
-}
-.src-links a:hover { color:var(--ink); border-color:var(--ink3); }
-
-/* FOOTER */
-footer {
-  margin-top:16px; padding:12px 0; border-top:1px solid var(--rule);
-  display:flex; justify-content:space-between;
+  display:flex; justify-content:space-between; align-items:center;
   font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted);
 }
-.ft-dot { display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--r2); margin-right:6px; animation:bl 2s infinite; }
+.ft-left { display:flex; align-items:center; gap:8px; }
+.ft-dot { width:6px; height:6px; border-radius:50%; background:var(--c2); display:inline-block; animation:bl 2s infinite; }
 @keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+.ft-right a { color:var(--muted); text-decoration:none; }
+.ft-right a:hover { text-decoration:underline; }
 
-@media(max-width:760px){
-  .columns { grid-template-columns:1fr; }
+@media(max-width:800px){
+  .main-grid { grid-template-columns:1fr; margin:12px 0 0; }
   .col { border-right:none; border-bottom:1px solid var(--ink); }
   .col:last-child { border-bottom:none; }
+  .stats-bar { grid-template-columns:1fr 1fr; }
+  .stat-cell:nth-child(5) { grid-column:span 2; }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<!-- MASTHEAD -->
+<!-- ── MASTHEAD ── -->
 <div class="masthead">
-  <div class="paper-flag">Labor <em>Briefing</em> Insight</div>
-  <div class="paper-tagline">노사관계 · 노동정책 · 노동법률 · Daily Intelligence</div>
-  <div class="masthead-meta">
-    <span>ERM팀 내부 공유용</span>
-    <span class="issue">2026년 6월 10일 (수) — Vol. 2026-0610</span>
-    <span>수집처: 네이버뉴스 · 매일노동뉴스 · 이레이버 · 고용노동부 · 김앤장</span>
+  <div class="logo">
+    <div class="logo-title"><span>노동</span><strong>브리핑</strong></div>
+    <div class="logo-sub">Labor Relations · Policy · Law · Daily Intelligence</div>
+  </div>
+  <div class="masthead-right">
+    <div class="mh-date">2026년 6월 10일 (수)</div>
+    <div class="mh-tabs">
+      <div class="mh-tab active">현재기준</div>
+      <div class="mh-tab">실시간</div>
+      <div class="mh-tab">브리핑</div>
+    </div>
   </div>
 </div>
 
-<!-- THREE COLUMNS -->
-<div class="columns">
+<!-- ── STATS BAR ── -->
+<div class="stats-bar">
+  <div class="stat-cell all">
+    <div class="stat-label">전체</div>
+    <div class="stat-value">12건</div>
+  </div>
+  <div class="stat-cell s0">
+    <div class="stat-label">노사관계</div>
+    <div class="stat-value">4건</div>
+  </div>
+  <div class="stat-cell s1">
+    <div class="stat-label">노동정책</div>
+    <div class="stat-value">4건</div>
+  </div>
+  <div class="stat-cell s2">
+    <div class="stat-label">노동법률</div>
+    <div class="stat-value">4건</div>
+  </div>
+  <div class="stat-cell src">
+    <div class="stat-label">데이터 소스</div>
+    <div class="stat-value">12곳</div>
+  </div>
+</div>
 
-  <!-- ─── COL 0: 노사관계 ─── -->
+<!-- ── SOURCE BAR ── -->
+<div class="source-bar">
+  <span class="icon">🔍</span>
+  <span class="src-label">수집 출처</span>
+  <span class="src-sites">주요뉴스사이트(네이버뉴스·매일노동뉴스·이레이버·한겨레·뉴시스) · 고용노동부사이트 · 노동계사이트(민주노총·한국노총) · 법률사이트(김앤장·신&amp;김·율촌·광장·법률신문 등)</span>
+  <span class="sep">—</span>
+  <span class="src-period">2026년 6월 9일(화) 10:00 ~ 6월 10일(수) 09:59 기준 실제 검색 데이터로 구성한 브리핑입니다.</span>
+</div>
+
+<!-- ── STATUS BAR ── -->
+<div class="status-bar">
+  <span class="status-check">✓</span>
+  <span class="status-text">2026년 6월 10일(수) · 12건 수집 완료</span>
+  <span class="status-divider">|</span>
+  <div class="status-counts">
+    <span class="status-count s0">🤝 노사관계 4</span>
+    <span class="status-count s1">🏛 노동정책 4</span>
+    <span class="status-count s2">⚖️ 노동법률 4</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MAIN GRID
+══════════════════════════════════════════ -->
+<div class="main-grid">
+
+  <!-- ─────────────────────────────
+       SECTION 01 · 노사관계
+  ───────────────────────────────── -->
   <div class="col col-0">
-    <div class="col-hd">
-      <span class="col-badge">COL·01</span>
-      <span class="col-title">노사관계</span>
+    <div class="sec-hd">
+      <div class="sec-num">Section 01</div>
+      <div class="sec-title-row">
+        <div><span class="sec-emoji">🤝</span><span class="sec-name">노사관계</span></div>
+        <span class="sec-count">4건</span>
+      </div>
+      <div class="sec-keywords">민주노총<span>·</span>화섬노조<span>·</span>네이버지회<span>·</span>IT노조<span>·</span>대기업노조</div>
     </div>
-    <div class="col-body">
 
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">01</span>
-          <span class="art-hl">카카오 창사 20년 첫 파업…5개 법인 4시간 부분 파업 <span class="art-hot">HOT</span></span>
-        </div>
-        <div class="art-body">
-          화섬식품노조 카카오지회가 성과급 산정 기준 이견으로 오전 10시~오후 3시 부분 파업 돌입. 카카오·카카오페이·카카오엔터프라이즈 등 5개 법인 동참.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://www.etoday.co.kr/news/view/2591952" target="_blank">이투데이 · 2026.06.10</a>
-        </div>
+    <div class="sub-group">
+      <span class="sg-label">🖥 IT·플랫폼 노조</span>
+      <span class="sg-count">1건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">이투데이</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">오늘</span>
+        <span class="badge badge-hot">HOT</span>
       </div>
-
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">02</span>
-          <span class="art-hl">레미콘운송노조 전면파업…수도권 믹서트럭 1만1천대 멈춰 <span class="art-hot">HOT</span></span>
-        </div>
-        <div class="art-body">
-          6월 8일 조합원 8,000명 운행 중단. 운송단가 인상·통합교섭 요구. 삼성전자 평택·SK하이닉스 용인 반도체 클러스터 공정 차질 우려.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://biz.newdaily.co.kr/site/data/html/2026/06/08/2026060800099.html" target="_blank">뉴데일리 · 2026.06.08</a>
-        </div>
+      <div class="art-hl">
+        <a href="https://www.etoday.co.kr/news/view/2591952" target="_blank">카카오 창사 20년 만에 첫 파업…5개 계열사 노조 4시간 부분 파업</a>
       </div>
-
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">03</span>
-          <span class="art-hl">민주노총, 7월 15일 돌봄노동자 총파업 예고</span>
-        </div>
-        <div class="art-body">
-          돌봄노동자 처우개선 예산 촉구 '6월 투쟁' 선포. 최저임금 130% 보장·식대 월 16만원 등 4대 요구안. 6/9~6/23 릴레이 1인 시위 진행 중.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://nodong.org/statement/7933478" target="_blank">민주노총 · 2026.06.09</a>
-        </div>
+      <div class="art-body">
+        민주노총 화섬식품노조 카카오지회가 성과급 산정 기준 이견으로 창사 20년 만에 첫 부분파업에 돌입했다. 카카오 본사·카카오페이·카카오엔터프라이즈·디케이테크인·엑스엘게임즈 등 5개 법인 조합원이 오전 10시~오후 3시(점심 제외 실근무 4시간) 파업에 참여했다. 영업이익 연동 성과급 배분 방식과 RSU 산정 제외 여부가 핵심 쟁점으로, 최종 교섭 결렬 후 파업이 확정됐다. 카카오 주가는 장중 2.78% 하락했다.
       </div>
+    </div>
 
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">04</span>
-          <span class="art-hl">민주노총 "이재명 정부 1년 70점"…추가 요구 과제 제시</span>
-        </div>
-        <div class="art-body">
-          노동정책 이행 평가 70점 발표. 노란봉투법 시행·고용보험 확대는 긍정 평가. 양극화 해소 미흡 지적하며 7월 총파업 압박 유지.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://biz.heraldcorp.com/article/10768486" target="_blank">헤럴드경제 · 2026.06.09</a>
-        </div>
+    <div class="sub-group">
+      <span class="sg-label">🚛 운송·건설 노조</span>
+      <span class="sg-count">1건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">뉴데일리</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">2일 전</span>
+        <span class="badge badge-hot">HOT</span>
       </div>
+      <div class="art-hl">
+        <a href="https://biz.newdaily.co.kr/site/data/html/2026/06/08/2026060800099.html" target="_blank">레미콘 운송노조 전면파업…수도권 믹서트럭 1만1천 대 운행 중단</a>
+      </div>
+      <div class="art-body">
+        전국레미콘운송노동조합 수도권 조합원 8,000명이 6월 8일 오전 8시를 기해 전면파업에 돌입해 믹서트럭 1만1천 대 운행이 중단됐다. 운송단가 인상·통합교섭체계 도입을 요구하며 파업에 나섰으며, 2월 서울행정법원의 근로자성 인정 판결이 배경이 됐다. 수도권 레미콘 공급량의 70%에 해당하며, 삼성전자 평택캠퍼스·SK하이닉스 용인 반도체 클러스터 공정 차질이 우려된다.
+      </div>
+    </div>
 
+    <div class="sub-group">
+      <span class="sg-label">✊ 민주노총 동향</span>
+      <span class="sg-count">2건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">민주노총</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">어제</span>
+      </div>
+      <div class="art-hl">
+        <a href="https://nodong.org/statement/7933478" target="_blank">민주노총, 돌봄노동자 처우개선 촉구 '6월 투쟁' 선포…7월 15일 총파업 예고</a>
+      </div>
+      <div class="art-body">
+        민주노총이 돌봄노동자 처우개선 예산 확대를 촉구하며 '6월 투쟁'을 선포하고 7월 15일 총파업을 공식 예고했다. ▲최저임금 130% 기본급 보장 ▲월 16만원 식대 ▲명절상여금 120% ▲교통비 15만원 지급 등 4대 요구안을 제시했다. 6월 9일~23일 청와대·복지부·기획예산처 앞 3개 거점 릴레이 1인 시위를 진행 중이며, 정부가 요구를 수용하지 않을 경우 총파업을 강행할 방침이다.
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">헤럴드경제</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">어제</span>
+      </div>
+      <div class="art-hl">
+        <a href="https://biz.heraldcorp.com/article/10768486" target="_blank">민주노총 "이재명 정부 1년 70점"…7월 총파업 압박 유지</a>
+      </div>
+      <div class="art-body">
+        민주노총이 이재명 정부 출범 1년을 '100점 만점에 70점'으로 평가하며 추가 요구 이행 없이는 7월 총파업을 강행하겠다는 방침을 재확인했다. 노란봉투법 시행·고용보험 확대·최저임금 인상 등은 긍정 평가하면서도 양극화 해소 미흡·공공 비정규직 정규화 지연·돌봄예산 삭감 등을 주요 과제로 지적했다. 7월 15일 총파업을 기점으로 하반기 투쟁 강도를 높일 계획이다.
+      </div>
     </div>
   </div>
 
-  <!-- ─── COL 1: 노동정책 ─── -->
+  <!-- ─────────────────────────────
+       SECTION 02 · 노동정책
+  ───────────────────────────────── -->
   <div class="col col-1">
-    <div class="col-hd">
-      <span class="col-badge">COL·02</span>
-      <span class="col-title">노동정책</span>
+    <div class="sec-hd">
+      <div class="sec-num">Section 02</div>
+      <div class="sec-title-row">
+        <div><span class="sec-emoji">🏛</span><span class="sec-name">노동정책</span></div>
+        <span class="sec-count">4건</span>
+      </div>
+      <div class="sec-keywords">고용노동부<span>·</span>장관발표<span>·</span>보도자료<span>·</span>주요정책</div>
     </div>
-    <div class="col-body">
 
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">01</span>
-          <span class="art-hl">고용노동부, 포괄임금 오남용 방지 지침 현장 점검 본격화</span>
-        </div>
-        <div class="art-body">
-          4월 9일 시행 지침 기반 분기별 기획감독 진행 중. 정액급제·정액수당제 금지 및 실제 근로시간 기준 법정수당 지급 의무 점검 강화.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://www.shinkim.com/kor/media/newsletter/3232" target="_blank">김앤장 뉴스레터 · 2026.04</a>
-        </div>
+    <div class="sub-group">
+      <span class="sg-label">📋 근로시간·임금 정책</span>
+      <span class="sg-count">1건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">고용노동부</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">2개월 전</span>
+        <span class="badge badge-hot">HOT</span>
       </div>
-
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">02</span>
-          <span class="art-hl">고용보험, 근로시간→소득 기준으로 개편…플랫폼 노동자 확대</span>
-        </div>
-        <div class="art-body">
-          2026년 주요업무계획 핵심 과제. N잡러·특수고용직·플랫폼 종사자도 고용보험 적용. 소득 기준 하한선 별도 설정 논의 진행 중.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://www.moel.go.kr/policy/policydata/view.do?bbs_seq=20251200714" target="_blank">고용노동부 · 2026년 주요업무계획</a>
-        </div>
+      <div class="art-hl">
+        <a href="https://www.shinkim.com/kor/media/newsletter/3232" target="_blank">고용노동부, 포괄임금 오남용 방지 지침 현장점검 본격화</a>
       </div>
-
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">03</span>
-          <span class="art-hl">육아기 10시 출근제 지원 신설…일·가정 양립 정책 확대</span>
-        </div>
-        <div class="art-body">
-          2026년 신설. 육아기 자녀를 둔 근로자 10시 출근 시 사업주에 장려금 지원. 유연근무 확산 인센티브 체계 강화.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18808" target="_blank">고용노동부 보도자료 · 2026.01</a>
-        </div>
+      <div class="art-body">
+        고용노동부가 4월 9일부터 시행 중인 '포괄임금 오남용 방지 지침'을 기반으로 분기별 기획감독을 본격 진행하고 있다. 정액급제·정액수당제 도입 금지, 실제 근로시간 기준 법정수당 지급 의무, 고정OT 약정 시에도 실근로 기준 차액 지급 의무를 규정한다. 5인 이상 사업장은 디지털 출퇴근 기록을 3년간 보관해야 하며, 위반 적발 시 과태료 부과 및 시정명령이 이뤄진다.
       </div>
+    </div>
 
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">04</span>
-          <span class="art-hl">지역고용활성화법 제정 추진…지자체 자율 일자리 기획 허용</span>
-        </div>
-        <div class="art-body">
-          지방정부가 지역 특성에 맞는 고용사업 직접 기획·추진 가능하도록 법제화. 중앙 집중형 고용정책 탈피, 지역별 맞춤형 일자리 체계 구축 목표.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://www.korea.kr/news/policyNewsView.do?newsId=156734720" target="_blank">정책브리핑 · 2026</a>
-        </div>
+    <div class="sub-group">
+      <span class="sg-label">🛡 고용보험·사회안전망</span>
+      <span class="sg-count">1건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">고용노동부</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">올해</span>
       </div>
+      <div class="art-hl">
+        <a href="https://www.moel.go.kr/policy/policydata/view.do?bbs_seq=20251200714" target="_blank">고용노동부, 2026 업무보고…고용보험 기준 근로시간→소득으로 전환</a>
+      </div>
+      <div class="art-body">
+        고용노동부가 2026년 주요업무계획에서 고용보험 적용 기준을 근로시간에서 소득 기준으로 전환한다고 밝혔다. 주당 15시간 미만 근로자, N잡러, 특수고용직, 플랫폼 종사자 등 새로운 형태의 비임금 노동자도 고용보험 보호를 받게 된다. 소득 기준 하한선 및 보험료 산정 방식은 별도 시행령 개정을 통해 확정되며, 2027년 전면 시행을 목표로 준비 중이다.
+      </div>
+    </div>
 
+    <div class="sub-group">
+      <span class="sg-label">👶 일·가정 양립 정책</span>
+      <span class="sg-count">1건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">고용노동부</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">올해</span>
+        <span class="badge badge-new">NEW</span>
+      </div>
+      <div class="art-hl">
+        <a href="https://www.moel.go.kr/news/enews/report/enewsView.do?news_seq=18808" target="_blank">육아기 10시 출근제 지원 신설…사업주 장려금 지급으로 유연근무 확대</a>
+      </div>
+      <div class="art-body">
+        고용노동부가 2026년 신설 시책으로 육아기 자녀를 둔 근로자의 오전 10시 출근을 허용하는 사업주에게 장려금을 지원하는 '육아기 10시 출근제'를 도입했다. 8세 이하 또는 초등학교 2학년 이하 자녀를 둔 근로자가 대상이며, 기존 유연근무 지원제도와 별도로 운영된다. 중소기업의 유연근무 도입을 유도하고 경력단절 여성의 고용 유지율을 높이는 것이 핵심 목표다.
+      </div>
+    </div>
+
+    <div class="sub-group">
+      <span class="sg-label">📍 지역·고용 입법</span>
+      <span class="sg-count">1건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">정책브리핑</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">올해</span>
+      </div>
+      <div class="art-hl">
+        <a href="https://www.korea.kr/news/policyNewsView.do?newsId=156734720" target="_blank">지역고용활성화법 제정 추진…지자체 자율 일자리 기획·집행 허용</a>
+      </div>
+      <div class="art-body">
+        고용노동부가 지방정부가 지역 특성에 맞는 일자리 사업을 자율적으로 기획·추진할 수 있도록 「지역고용활성화에 관한 법률」 제정을 추진하고 있다. 중앙 집중형 고용정책 체계를 탈피해 지역 맞춤형 일자리 실험을 허용하는 것이 핵심이며, 지역 단위 노사정 협력 기구 설치와 재정 자율권 부여도 법안에 포함된다. 고용노동부는 연내 국회 제출을 목표로 하고 있다.
+      </div>
     </div>
   </div>
 
-  <!-- ─── COL 2: 노동법률 ─── -->
+  <!-- ─────────────────────────────
+       SECTION 03 · 노동법률
+  ───────────────────────────────── -->
   <div class="col col-2">
-    <div class="col-hd">
-      <span class="col-badge">COL·03</span>
-      <span class="col-title">노동법률</span>
+    <div class="sec-hd">
+      <div class="sec-num">Section 03</div>
+      <div class="sec-title-row">
+        <div><span class="sec-emoji">⚖️</span><span class="sec-name">노동법률</span></div>
+        <span class="sec-count">4건</span>
+      </div>
+      <div class="sec-keywords">노동법 개정<span>·</span>입법<span>·</span>주요판례</div>
     </div>
-    <div class="col-body">
 
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">01</span>
-          <span class="art-hl">노란봉투법 3월 13일 시행…사용자 범위 확대 효과 본격화 <span class="art-hot">NEW</span></span>
-        </div>
-        <div class="art-body">
-          원청의 실질적 지배력 행사 시 교섭 의무 발생. 쟁의행위 손배청구 남용 제한, 조합원 개별 귀책·기여도 기준 책임 분산 적용.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://shiftee.io/ko/blog/article/2026-yellow-envelope-law-summary-employer-scope" target="_blank">시프티 · 2026.03</a>
-        </div>
+    <div class="sub-group">
+      <span class="sg-label">📌 주간경향 · 시행·판례</span>
+      <span class="sg-count">2건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">신&amp;김 법무법인</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">3개월 전</span>
+        <span class="badge badge-hot">HOT</span>
       </div>
-
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">02</span>
-          <span class="art-hl">포괄임금제 폐지 근로기준법 개정안 9건 국회 계류 중</span>
-        </div>
-        <div class="art-body">
-          초과근로수당 포괄계약 금지·근로시간 기록 의무화 내용 포함. 고정OT 허용 범위 등 세부 쟁점으로 법안별 차이 존재. 6월 내 통과 목표.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://www.lawtimes.co.kr/news/articleView.html?idxno=220697" target="_blank">법률신문 · 2026.04</a>
-        </div>
+      <div class="art-hl">
+        <a href="https://shiftee.io/ko/blog/article/2026-yellow-envelope-law-summary-employer-scope" target="_blank">노란봉투법 3월 13일 시행…사용자 범위 확대·손배청구 남용 제한 본격화</a>
       </div>
-
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">03</span>
-          <span class="art-hl">레미콘 운송사업자 노동법상 근로자성 인정 판결 (서울행정법원)</span>
-        </div>
-        <div class="art-body">
-          2026년 2월 서울행정법원, 운송사업자를 노조법상 '근로자'로 판단. 3월 노조설립신고증 교부. 특수고용직 근로자성 확대 선례로 주목.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://v.daum.net/v/20260608211806656" target="_blank">카카오뉴스(다음) · 2026.06.08</a>
-        </div>
+      <div class="art-body">
+        2025년 8월 국회를 통과한 노란봉투법(노조법 제2·3조 개정)이 2026년 3월 13일 시행됐다. 원청이 하청·특수고용 노동자의 근로조건에 실질적 지배력을 행사하면 교섭 의무가 발생하며, 쟁의행위 손해배상 청구 시 조합원 개별 귀책·기여도를 따져 책임을 분산한다. 카카오 파업 등 IT업계 쟁의에도 직접 적용되어 손배 청구 남용을 억제하는 효과가 기대된다.
       </div>
+    </div>
 
-      <div class="article">
-        <div class="art-top">
-          <span class="art-num">04</span>
-          <span class="art-hl">근로자 추정제 입법 논의…특수고용·플랫폼 보호 강화 추진</span>
-        </div>
-        <div class="art-body">
-          고용관계 입증책임 사용자 전환 핵심. 2026년 입법 목표로 논의 중이나 경영계 반발로 국회 계류. 프리랜서·플랫폼 종사자 적용 확대 포함.
-        </div>
-        <div class="art-src">
-          <span class="art-dot"></span>
-          <a href="https://www.shoplworks.com/blog-insight/korea-labor-policy-hr-2026-update" target="_blank">샤플 HR · 2026</a>
-        </div>
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">뉴시스</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">2일 전</span>
+        <span class="badge badge-new">NEW</span>
       </div>
+      <div class="art-hl">
+        <a href="https://v.daum.net/v/20260608211806656" target="_blank">서울행정법원, 레미콘 운송사업자 노조법상 '근로자' 인정…파업 근거 마련</a>
+      </div>
+      <div class="art-body">
+        서울행정법원이 2026년 2월 레미콘 운송사업자를 노동조합법상 근로자로 판단, 3월 노조설립신고증이 교부됐다. 법원은 운송사업자가 실질적으로 레미콘 제조사의 지휘·통제를 받는다고 보아 근로자성을 인정했다. 이번 판결은 레미콘 운송노조의 이번 전면파업의 법적 근거가 됐으며, 특수고용직·플랫폼 종사자의 근로자성 확대 선례로서 향후 유사 사건에 광범위한 영향이 예상된다.
+      </div>
+    </div>
 
+    <div class="sub-group">
+      <span class="sg-label">📜 입법 동향</span>
+      <span class="sg-count">2건</span>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">법률신문</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">2개월 전</span>
+      </div>
+      <div class="art-hl">
+        <a href="https://www.lawtimes.co.kr/news/articleView.html?idxno=220697" target="_blank">포괄임금제 폐지 근로기준법 개정안 9건 국회 계류…6월 처리 목표</a>
+      </div>
+      <div class="art-body">
+        포괄임금제 폐지를 위한 근로기준법 개정안 9건이 현재 국회에 계류 중이다. 초과근로수당 포괄계약 금지·근로시간 기록의무화가 공통 내용이며, 고정OT 허용 범위·위반 제재 수준 등 세부 쟁점에서 법안별 차이가 있다. 고용노동부는 6월 내 입법 완료를 목표로 설정했으나, 경영계의 반발과 여야 이견으로 처리 시점이 불투명한 상황이다.
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="art-meta">
+        <span class="art-source">샤플 HR</span>
+        <span class="art-dot-sep">·</span>
+        <span class="art-time">올해</span>
+      </div>
+      <div class="art-hl">
+        <a href="https://www.shoplworks.com/blog-insight/korea-labor-policy-hr-2026-update" target="_blank">근로자 추정제 입법 논의…특수고용·플랫폼 종사자 노동법 보호 확대 추진</a>
+      </div>
+      <div class="art-body">
+        고용관계 입증 책임을 사용자에게 전환하는 '근로자 추정제' 입법 논의가 진행 중이다. 특수고용직·프리랜서·플랫폼 종사자를 근로자로 추정해 기본 노동법 보호를 받게 하는 것이 핵심으로, 율촌·광장 등 로펌들이 관련 기업 리스크 분석을 활발히 내놓고 있다. 2026년 입법 목표이나 경영계 반발로 국회 계류 중이며, 노란봉투법 시행 효과를 지켜보며 속도를 조율하고 있다.
+      </div>
     </div>
   </div>
 
-</div><!-- /columns -->
+</div><!-- /main-grid -->
 
-<!-- SOURCES BAR -->
-<div class="sources-bar">
-  <span class="src-label">Data Sources</span>
-  <div class="src-links">
-    <a href="https://news.naver.com/" target="_blank">네이버뉴스</a>
-    <a href="https://www.labortoday.co.kr/" target="_blank">매일노동뉴스</a>
-    <a href="https://www.elabor.co.kr/" target="_blank">이레이버</a>
-    <a href="https://www.moel.go.kr/" target="_blank">고용노동부</a>
-    <a href="https://www.kimchang.com/" target="_blank">김앤장 로펌</a>
+<!-- ── FOOTER ── -->
+<div class="page-footer">
+  <div class="ft-left">
+    <span class="ft-dot"></span>
+    <span>Labor Briefing Insight · ERM팀 내부 공유용</span>
+  </div>
+  <div class="ft-right">
+    수집기간: 2026.06.09 10:00 ~ 2026.06.10 09:59 &nbsp;·&nbsp;
+    <a href="./index.html">← 아카이브로</a>
   </div>
 </div>
 
-<footer>
-  <div><span class="ft-dot"></span>LABOR BRIEFING INSIGHT · ERM팀 · 내부 공유용</div>
-  <div>2026.06.10 생성 · <a href="./index.html" style="color:var(--muted);text-decoration:none;">← 아카이브로</a></div>
-</footer>
-
-</div>
 </body>
 </html>
