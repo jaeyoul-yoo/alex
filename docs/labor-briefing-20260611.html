@@ -41,7 +41,7 @@ padding:14px 28px 12px; display:flex; justify-content:space-between; align-items
 STATS BAR
 ═══════════════════════════════════ */
 .stats-bar {
-display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr 1fr;
+display:grid; grid-template-columns:1fr 1fr 1fr 1fr;
 border-bottom:1px solid var(--stat-border); background:var(--paper);
 }
 .stat-cell {
@@ -203,7 +203,7 @@ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted);
 .col { border-right:none; border-bottom:1px solid var(--ink); }
 .col:last-child { border-bottom:none; }
 .stats-bar { grid-template-columns:1fr 1fr; }
-.stat-cell:nth-child(5) { grid-column:span 2; }
+.stat-cell:nth-child(4) { grid-column:span 2; }
 }
 </style>
 </head>
@@ -227,10 +227,6 @@ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted);
 
 <!-- ── STATS BAR ── -->
 <div class="stats-bar">
-<div class="stat-cell all">
-<div class="stat-label">전체</div>
-<div class="stat-value">8건</div>
-</div>
 <div class="stat-cell s0">
 <div class="stat-label">노사관계</div>
 <div class="stat-value">4건</div>
