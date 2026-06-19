@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>노동 브리핑 — 2026.06.19</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Gothic:wght@400;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:14px; }
+:root {
+--ink:#1a1a24; --ink2:#2e2e40; --ink3:#4a4a60; --muted:#8888a4; --muted2:#b0b0c4;
+--rule:#e4e4f0; --bg:#f2f1ed; --paper:#ffffff; --paper2:#f8f7f4;
+--c0:#c0392b; --c0bg:#fdf2f1; --c0light:#fae8e6; --c0rule:#e8c5c2;
+--c1:#1a5fa8; --c1bg:#f0f5fc; --c1light:#e4edf8; --c1rule:#bdd0ea;
+--c2:#2d6a4f; --c2bg:#f0f7f3; --c2light:#e2f0e9; --c2rule:#b7d9c6;
+--hot:#d35400; --hotbg:#fef3ed; --new:#0e7490; --newbg:#ecfeff;
+--stat-border:#d8d8e8;
+}
+body { background:var(--bg); color:var(--ink); font-family:'Nanum Gothic',sans-serif; min-height:100vh; }
+
+.masthead {
+background:var(--paper); border-bottom:2px solid var(--ink);
+padding:14px 28px 12px; display:flex; justify-content:space-between; align-items:center;
+}
+.logo { display:flex; flex-direction:column; }
+.logo-title { font-family:'Nanum Myeongjo',serif; font-size:28px; line-height:1; letter-spacing:-0.5px; }
+.logo-title span { font-weight:400; color:var(--ink3); }
+.logo-title strong { font-weight:800; color:var(--ink); }
+.logo-sub { font-size:9px; letter-spacing:3px; color:var(--muted); text-transform:uppercase; font-family:'IBM Plex Mono',monospace; margin-top:5px; }
+.masthead-right { text-align:right; }
+.mh-date { font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500; color:var(--ink2); }
+
+.source-bar {
+background:var(--paper2); border-bottom:1px solid var(--rule);
+padding:9px 28px; font-size:11.5px; color:var(--ink3);
+display:flex; gap:8px; align-items:baseline; flex-wrap:wrap;
+font-family:'Nanum Gothic',sans-serif;
+}
+.source-bar .icon { font-size:14px; flex-shrink:0; }
+.source-bar .src-label { font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; flex-shrink:0; }
+.source-bar .src-sites { color:var(--ink3); font-size:11.5px; }
+.source-bar .src-period { color:var(--muted); font-size:10.5px; font-family:'IBM Plex Mono',monospace; }
+.source-bar .sep { color:var(--muted2); }
+
+.status-bar {
+background:#f0fdf4; border-bottom:1px solid #bbf7d0; border-top:1px solid #bbf7d0;
+padding:8px 28px; font-size:12px;
+display:flex; align-items:center; gap:16px;
+}
+.status-check { color:#16a34a; font-size:14px; font-weight:800; }
+.status-text { color:#15803d; font-weight:700; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.5px; }
+.status-divider { color:#86efac; }
+.status-counts { display:flex; gap:12px; }
+.status-count { font-size:11px; font-family:'IBM Plex Mono',monospace; }
+.status-count.s0 { color:var(--c0); }
+.status-count.s1 { color:var(--c1); }
+.status-count.s2 { color:var(--c2); }
+
+.main-grid {
+display:grid; grid-template-columns:repeat(3,1fr);
+gap:0; margin:20px 20px 0; border:1px solid var(--ink);
+background:var(--paper);
+}
+.col { border-right:1px solid var(--ink); background:var(--paper); }
+.col:last-child { border-right:none; }
+
+.sec-hd {
+padding:12px 16px 10px; border-bottom:2px solid var(--ink);
+background:var(--paper);
+}
+.sec-num { font-family:'IBM Plex Mono',monospace; font-size:8.5px; letter-spacing:2.5px; color:var(--muted); text-transform:uppercase; margin-bottom:5px; }
+.sec-title-row { display:flex; align-items:center; }
+.sec-emoji { font-size:18px; margin-right:6px; line-height:1; }
+.sec-name { font-size:16px; font-weight:800; line-height:1; }
+.col-0 .sec-name { color:var(--c0); }
+.col-1 .sec-name { color:var(--c1); }
+.col-2 .sec-name { color:var(--c2); }
+.sec-keywords {
+margin-top:7px; font-size:10.5px; color:var(--muted);
+font-family:'IBM Plex Mono',monospace; letter-spacing:0.3px;
+}
+.sec-keywords span { color:var(--muted2); margin:0 2px; }
+
+.sub-group {
+padding:6px 16px; border-bottom:1px solid var(--rule);
+display:flex; align-items:center;
+background:var(--paper2);
+}
+.col-0 .sub-group { background:var(--c0light); border-bottom-color:var(--c0rule); }
+.col-1 .sub-group { background:var(--c1light); border-bottom-color:var(--c1rule); }
+.col-2 .sub-group { background:var(--c2light); border-bottom-color:var(--c2rule); }
+.sg-label { font-size:10.5px; font-weight:700; font-family:'Nanum Gothic',sans-serif; }
+.col-0 .sg-label { color:var(--c0); }
+.col-1 .sg-label { color:var(--c1); }
+.col-2 .sg-label { color:var(--c2); }
+
+.article { padding:13px 16px; border-bottom:1px solid var(--rule); }
+.article:last-child { border-bottom:none; }
+.article:hover { background:var(--paper2); }
+.art-meta {
+display:flex; align-items:center; gap:6px; margin-bottom:5px; flex-wrap:wrap;
+}
+.art-source { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted); }
+.art-dot-sep { color:var(--muted2); font-size:10px; }
+.art-time { font-family:'IBM Plex Mono',monospace; font-size:10px; color:var(--muted2); }
+.badge {
+font-family:'IBM Plex Mono',monospace; font-size:8px; font-weight:700;
+letter-spacing:.5px; padding:1px 5px;
+}
+.badge-hot { background:var(--hot); color:#fff; }
+.badge-new { background:var(--new); color:#fff; }
+.art-hl {
+font-family:'Nanum Myeongjo',serif; font-size:13.5px; font-weight:700;
+line-height:1.5; color:var(--ink); margin-bottom:7px;
+}
+.art-hl a { color:inherit; text-decoration:none; }
+.art-hl a:hover { text-decoration:underline; }
+.art-body { font-size:12px; line-height:1.85; color:var(--ink3); }
+
+.page-footer {
+margin:20px 20px 40px; padding:12px 20px;
+border:1px solid var(--rule); background:var(--paper);
+display:flex; justify-content:space-between; align-items:center;
+font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted);
+}
+.ft-left { display:flex; align-items:center; gap:8px; }
+.ft-dot { width:6px; height:6px; border-radius:50%; background:var(--c2); display:inline-block; animation:bl 2s infinite; }
+@keyframes bl{0%,100%{opacity:1}50%{opacity:.2}}
+.ft-right a { color:var(--muted); text-decoration:none; }
+.ft-right a:hover { text-decoration:underline; }
+
+@media(max-width:800px){
+.main-grid { grid-template-columns:1fr; margin:12px 0 0; }
+.col { border-right:none; border-bottom:1px solid var(--ink); }
+.col:last-child { border-bottom:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── MASTHEAD ── -->
+<div class="masthead">
+<div class="logo">
+<div class="logo-title"><span>Labor Briefing </span><strong>Insight</strong></div>
+<div class="logo-sub">Labor Relations · Policy · Law · Daily Intelligence</div>
+</div>
+<div class="masthead-right">
+<div class="mh-date">2026년 6월 19일 (목)</div>
+</div>
+</div>
+
+<!-- ── SOURCE BAR ── -->
+<div class="source-bar">
+<span class="icon">🔍</span>
+<span class="src-label">수집 출처</span>
+<span class="src-sites">헤럴드경제·이데일리·뉴스핌·파이낸셜뉴스·허프포스트·시사저널·디지털타임스·매일노동뉴스</span>
+<span class="sep">—</span>
+<span class="src-period">2026년 6월 18일(수) 10:00 ~ 6월 19일(목) 09:59 기준 수집 브리핑입니다.</span>
+</div>
+
+<!-- ── STATUS BAR ── -->
+<div class="status-bar">
+<span class="status-check">✓</span>
+<span class="status-text">2026년 6월 19일(목) · 6건 수집 완료</span>
+<span class="status-divider">|</span>
+<div class="status-counts">
+<span class="status-count s0">🤝 노사관계 2</span>
+<span class="status-count s1">🏛 노동정책 2</span>
+<span class="status-count s2">⚖️ 법률정책 2</span>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+MAIN GRID
+══════════════════════════════════════════ -->
+<div class="main-grid">
+
+<!-- ─────────────────────────────
+SECTION 01 · 노사관계
+───────────────────────────────── -->
+<div class="col col-0">
+<div class="sec-hd">
+<div class="sec-num">Section 01</div>
+<div class="sec-title-row">
+<span class="sec-emoji">🤝</span><span class="sec-name">노사관계</span>
+</div>
+<div class="sec-keywords">현대차<span>·</span>파업<span>·</span>찬반투표<span>·</span>교섭</div>
+</div>
+
+<div class="sub-group"><span class="sg-label">🏭 완성차 노조</span></div>
+
+<div class="article">
+<div class="art-meta">
+<span class="art-source">헤럴드경제·허프포스트</span>
+<span class="art-dot-sep">·</span>
+<span class="art-time">6월 18일</span>
+<span class="badge badge-hot">HOT</span>
+</div>
+<div class="art-hl">
+<a href="https://biz.heraldcorp.com/article/10770613" target="_blank">현대차 노조 6월 25일 파업 찬반투표 D-7…중노위 조정 기간 만료 임박, 파업 수순 가속</a>
+</div>
+<div class="art-body">
+현대차 노조(금속노조 현대차지부)는 6월 15일 중노위 쟁의행위 조정 신청 이후 6월 23일 임시대의원회의를 열어 파업 방향을 설정하고, 6월 25일 전체 조합원 파업 찬반투표를 실시한다. 중노위 조정 기간(10~15일) 만료가 임박하면서 조정중지 결정 후 합법 파업 절차가 본격화될 전망이다. 기본급 14만9,600원 인상·순이익 30% 성과급·AI·로봇 대체 고용보장이 핵심 쟁점이며, 7년 무분규 기록 여부가 주목된다.
+</div>
+</div>
+
+<div class="sub-group"><span class="sg-label">🔗 원하청 교섭</span></div>
+
+<div class="article">
+<div class="art-meta">
+<span class="art-source">청년일보·파이낸셜뉴스</span>
+<span class="art-dot-sep">·</span>
+<span class="art-time">6월 18일</span>
+<span class="badge badge-new">NEW</span>
+</div>
+<div class="art-hl">
+<a href="https://www.youthdaily.co.kr/news/article.html?no=221193" target="_blank">현대차, 정규직 파업 준비·하청 원청 교섭 압박 동시다발…"노무 리스크 이중고"</a>
+</div>
+<div class="art-body">
+현대차가 정규직 노조의 파업 찬반투표(6/25)와 하청지회 10곳의 원청 단체교섭 요구(울산지노위 인정)가 동시에 진행되는 '이중 노무 리스크' 국면에 직면했다. 원청 교섭이 임금·복지 전반으로 확대될 경우 8,500여 개 협력업체까지 파급 영향이 미칠 수 있어 경영계의 선제적 대응 전략 마련이 시급하다는 지적이 제기된다.
+</div>
+</div>
+</div>
+
+<!-- ─────────────────────────────
+SECTION 02 · 노동정책
+───────────────────────────────── -->
+<div class="col col-1">
+<div class="sec-hd">
+<div class="sec-num">Section 02</div>
+<div class="sec-title-row">
+<span class="sec-emoji">🏛</span><span class="sec-name">노동정책</span>
+</div>
+<div class="sec-keywords">최저임금<span>·</span>7차 전원회의<span>·</span>업종별 차등 부결</div>
+</div>
+
+<div class="sub-group"><span class="sg-label">💰 최저임금 심의</span></div>
+
+<div class="article">
+<div class="art-meta">
+<span class="art-source">이데일리·뉴스핌·한국경제</span>
+<span class="art-dot-sep">·</span>
+<span class="art-time">6월 18일</span>
+<span class="badge badge-hot">HOT</span>
+</div>
+<div class="art-hl">
+<a href="https://edaily.co.kr/News/Read?mediaCodeNo=257&newsId=06579686645483032" target="_blank">최저임금 7차 전원회의 — 업종별 차등적용 표결 부결(반대 14·찬성 11)…2027년도 단일 기준 적용</a>
+</div>
+<div class="art-body">
+최저임금위원회가 6월 18일 정부세종청사에서 제7차 전원회의를 개최해 2027년도 최저임금의 사업 종류별 구분 적용 여부를 표결한 결과 반대 14표·찬성 11표·무효 1표로 부결됐다. 이로써 2027년도 최저임금도 전 업종 단일 기준이 유지된다. 5차(도급근로자 별도 적용 부결)에 이어 연속 부결로 경영계 요구가 또 다시 좌절됐으며, 8차 전원회의는 6월 23일 개최 예정이다.
+</div>
+</div>
+
+<div class="article">
+<div class="art-meta">
+<span class="art-source">파이낸셜뉴스</span>
+<span class="art-dot-sep">·</span>
+<span class="art-time">6월 18일</span>
+<span class="badge badge-new">NEW</span>
+</div>
+<div class="art-hl">
+<a href="https://www.fnnews.com/news/202606181605370709" target="_blank">최저임금 심의 법정기한 D-11…8차 6/23 이후 노사 수정안 본격 교환 돌입</a>
+</div>
+<div class="art-body">
+최저임금 심의 법정기한(6월 29일)까지 11일이 남은 가운데, 업종별 차등 논의가 부결되면서 이제 핵심 쟁점은 '인상폭'으로 좁혀졌다. 노동계는 시급 1만2,000원(16.3% 인상), 경영계는 동결 또는 소폭 인상 입장을 유지하는 가운데 6월 23일 8차 전원회의에서 양측 수정안 교환이 본격화될 전망이다.
+</div>
+</div>
+</div>
+
+<!-- ─────────────────────────────
+SECTION 03 · 법률정책
+───────────────────────────────── -->
+<div class="col col-2">
+<div class="sec-hd">
+<div class="sec-num">Section 03</div>
+<div class="sec-title-row">
+<span class="sec-emoji">⚖️</span><span class="sec-name">법률정책</span>
+</div>
+<div class="sec-keywords">정년연장<span>·</span>노란봉투법<span>·</span>중노위 재심</div>
+</div>
+
+<div class="sub-group"><span class="sg-label">📋 정년연장 입법</span></div>
+
+<div class="article">
+<div class="art-meta">
+<span class="art-source">헤럴드경제·디지털타임스</span>
+<span class="art-dot-sep">·</span>
+<span class="art-time">6월 18일</span>
+<span class="badge badge-hot">HOT</span>
+</div>
+<div class="art-hl">
+<a href="https://biz.heraldcorp.com/article/10768274" target="_blank">정년연장 2028년 시작 유력 — 여당, 격년마다 1년씩 2036년 65세 달성 방안으로 가닥</a>
+</div>
+<div class="art-body">
+더불어민주당 정년연장특별위원회가 2028년부터 2년마다 정년을 1년씩 연장해 2036년 정년 65세를 달성하는 방안으로 내부 논의가 수렴되고 있다. 여당 초안은 취업규칙 불이익변경 기간을 최대 13년까지 허용하는 내용을 포함한다. 66년생부터 단계적 적용이 예상되며, 노동계는 찬성·경영계는 임금체계 개편 연계 조건을 요구하고 있다.
+</div>
+</div>
+
+<div class="sub-group"><span class="sg-label">⚖️ 개정 노조법 판정</span></div>
+
+<div class="article">
+<div class="art-meta">
+<span class="art-source">이투데이·한국경제</span>
+<span class="art-dot-sep">·</span>
+<span class="art-time">6월 18일</span>
+<span class="badge badge-new">NEW</span>
+</div>
+<div class="art-hl">
+<a href="https://www.etoday.co.kr/news/view/2590661" target="_blank">노란봉투법 첫 재심 초심 뒤집혔다 — 중노위, 중흥건설 원청 사용자성 인정(산업안전 한정)</a>
+</div>
+<div class="art-body">
+중앙노동위원회가 노란봉투법 시행 후 첫 재심 사건인 중흥건설 사건에서 전남지노위 초심 결정을 취소하고 하청 타워크레인 노조에 대한 원청의 사용자성을 산업안전 분야에 한해 인정했다(6/4 판정). 중노위 1호 재심으로 지노위 부결이 재심에서 뒤집힌 첫 사례다. 다만 임금 분야는 사용자성 불인정으로 범위가 제한돼, 향후 행정소송에서 사용자성 인정 범위 획정이 쟁점화될 전망이다.
+</div>
+</div>
+</div>
+
+</div><!-- /main-grid -->
+
+<!-- ── FOOTER ── -->
+<div class="page-footer">
+<div class="ft-left">
+<span class="ft-dot"></span>
+<span>Labor Briefing Insight · CHRO 참고자료</span>
+</div>
+<div class="ft-right">
+수집기간: 2026.06.18 10:00 ~ 2026.06.19 09:59 &nbsp;·&nbsp;
+<a href="./index.html">← 아카이브로</a>
+</div>
+</div>
+
+</body>
+</html>
